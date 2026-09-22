@@ -1,26 +1,63 @@
-# Wafi — IT Helpdesk Ticket Triage
+# WAFI | IT Helpdesk Ticket Triage
 
-Capstone for SDA-AIE-113. A lightweight rule-based service that routes IT tickets to a team and assigns `low`, `medium`, or `urgent` urgency.
+## 📌 وصف المشروع وفكرته
 
-## Run
-```bash
-make install
-make test
-make lint
-docker compose up --build
-```
+**WAFI** هو نظام لفرز وتصنيف طلبات الدعم الفني في قسم تقنية المعلومات.
 
-API:
-`POST /v1/predict` with `{"ticket_id":"T-1","text":"All users cannot access the service"}`.
+تتمثل فكرة المشروع في استقبال وصف المشكلة من المستخدم، ثم تحليل الطلب وتحديد **التصنيف أو الفريق المختص ومستوى الأولوية**، وعرض النتيجة من خلال واجهة ويب بسيطة وسهلة الاستخدام.
 
-`/health` is liveness and `/ready` is real readiness. Unknown request fields are rejected. The model is warmed only during startup.
 
-Architecture: `domain` → `service` → `adapters` → `api`; the model is hidden behind a Protocol.
 
-The project includes unit, integration and behavioural tests, an immutable golden file, Docker/Compose, non-root container execution, JSON logs with trace IDs, typed settings, CI/CD, benchmark/decision documents and a 5+ commit Git history.
+## 🛠️ التقنيات المستخدمة
 
-Before final submission, enable GitHub branch protection on `main` as required by the course specification.
+**لغة البرمجة**  
+Python
 
-## Extension
+**تطوير واجهة الـAPI**  
+FastAPI · REST API
 
-**Explainable triage reason** is the project extension. Every prediction returns a human-readable `reason` explaining why the policy assigned the urgency/team. It is covered by the API tests and is included without exposing personal data.
+**هندسة البرمجيات**  
+Clean Architecture · Protocol / Dependency Injection
+
+**الاختبار**  
+Pytest · Unit Testing · Integration Testing · Behavioural Testing
+
+**الحاويات والتشغيل**  
+Docker · Docker Compose
+
+**الأتمتة والجودة**  
+GitHub Actions · CI/CD · Branch Protection
+
+**الأمان والمراقبة**  
+JSON Logging · Trace ID · Secret Scanning
+
+## 🖥️ واجهة المشروع
+<img width="1919" height="839" alt="التقاط" src="https://github.com/user-attachments/assets/10dbf3bc-04d8-4552-8edd-e5194f30c57e" />
+
+<img width="1913" height="819" alt="التقاط1" src="https://github.com/user-attachments/assets/b741e317-59a2-4f22-8f45-2fe3cce3e391" />
+<img width="1916" height="958" alt="التقاط2" src="https://github.com/user-attachments/assets/b98cdd79-d47e-4174-86f9-326cc98defb6" />
+.
+
+## 🎓 الجهة
+
+تم تطوير المشروع ضمن برنامج:
+
+**SDAAIE — Software Engineering Practices for AI Systems**
+
+في **SDAIA Academy**
+
+**رابط الجهة:**  
+https://github.com/SDAIAAcademy
+
+## 🔗 رابط المشروع
+
+**GitHub Repository:**  
+https://github.com/asma61044-art/Finall_project_wafi_Asma_Alqahani
+
+## 👩🏻‍💻 المطور
+
+**المهندس أسماء القحطاني**
+
+## ✨ الخاتمة
+
+يمثل **WAFI** تطبيقًا عمليًا لمفاهيم هندسة البرمجيات، من خلال تطوير نظام منظم لفرز طلبات الدعم الفني وتحسين آلية تصنيفها وتوجيهها للفريق المختص.
