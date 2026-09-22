@@ -1,0 +1,5 @@
+[
+{"ticket_id":"G-001","text":"VPN is slow","team":"network","urgency":"medium"},
+{"ticket_id":"G-002","text":"All users cannot access the service","team":"service-desk","urgency":"urgent"},
+{"ticket_id":"G-003","text":"I forgot my password","team":"identity","urgency":"low"}
+]
