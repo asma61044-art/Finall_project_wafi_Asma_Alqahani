@@ -4,3 +4,7 @@
 3. FastAPI: provides strict validation and the required `/v1/predict` endpoint.
 4. Separate health/readiness: liveness does not imply model readiness.
 5. Commit-SHA image tags: avoids mutable `latest` production tags and makes releases traceable.
+
+
+## Extension
+The extension adds an explainable `reason` field to every prediction. This gives the operator a concise reason code/message for the decision and is tested through the API contract.

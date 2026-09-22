@@ -20,3 +20,7 @@ Architecture: `domain` → `service` → `adapters` → `api`; the model is hidd
 The project includes unit, integration and behavioural tests, an immutable golden file, Docker/Compose, non-root container execution, JSON logs with trace IDs, typed settings, CI/CD, benchmark/decision documents and a 5+ commit Git history.
 
 Before final submission, enable GitHub branch protection on `main` as required by the course specification.
+
+## Extension
+
+**Explainable triage reason** is the project extension. Every prediction returns a human-readable `reason` explaining why the policy assigned the urgency/team. It is covered by the API tests and is included without exposing personal data.
