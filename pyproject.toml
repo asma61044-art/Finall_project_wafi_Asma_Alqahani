@@ -32,4 +32,4 @@ root_package = "wafi"
 [[tool.importlinter.contracts]]
 name = "domain has no outer-layer imports"
 type = "layers"
-layers = ["wafi.domain","wafi.service","wafi.adapters","wafi.api"]
+layers = ["wafi.api","wafi.service","wafi.adapters","wafi.domain"]
