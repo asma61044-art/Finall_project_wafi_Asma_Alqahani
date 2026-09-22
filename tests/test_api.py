@@ -25,7 +25,10 @@ def test_predict():
 
 def test_extra_field_rejected():
     with TestClient(app) as client:
-        assert client.post(
-            "/v1/predict",
-            json={"ticket_id": "T-1", "text": "VPN", "bad": "x"},
-        ).status_code == 422
+        assert (
+            client.post(
+                "/v1/predict",
+                json={"ticket_id": "T-1", "text": "VPN", "bad": "x"},
+            ).status_code
+            == 422
+        )

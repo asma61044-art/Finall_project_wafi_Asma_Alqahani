@@ -32,10 +32,12 @@ def test_golden_reference_real_model():
     actual = []
     for case in cases:
         d = model.predict(Ticket(case["ticket_id"], case["text"]))
-        actual.append({
-            "ticket_id": case["ticket_id"],
-            "text": case["text"],
-            "team": d.team,
-            "urgency": d.urgency.value,
-        })
+        actual.append(
+            {
+                "ticket_id": case["ticket_id"],
+                "text": case["text"],
+                "team": d.team,
+                "urgency": d.urgency.value,
+            }
+        )
     assert actual == cases
