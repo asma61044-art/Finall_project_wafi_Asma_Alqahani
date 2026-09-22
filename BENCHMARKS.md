@@ -1,21 +1,16 @@
 # Benchmarks
 
-Run these commands on the final submission machine and paste the measured output below.
+Final measured results in GitHub Codespaces:
 
-```bash
-/usr/bin/time -p python -m pytest
-/usr/bin/time -p docker build -t wafi:local .
-docker image inspect wafi:local --format '{{.Size}} bytes'
-```
+| Metric | Result |
+|---|---:|
+| Test suite | 13 passed |
+| Test time | 0.84 s |
+| Coverage | 98.32% |
+| Docker build time | 39.316 s |
+| Docker image size | 391,842,198 bytes (~373.6 MB) |
 
-## Recorded results
-
-- Test time: `TO BE RECORDED`
-- Docker build time: `TO BE RECORDED`
-- Docker image size: `TO BE RECORDED`
-- Coverage: produced by `make test`
-
-Acceptance targets from the course specification:
-- image <= 500 MB
-- fast test gate <= 60 seconds
-- core-layer branch coverage >= 80%
+Thresholds:
+- Test time <= 60s: PASS
+- Docker image <= 500 MB: PASS
+- Test coverage >= 80%: PASS

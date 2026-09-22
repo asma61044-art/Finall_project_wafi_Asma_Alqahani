@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from uuid import uuid4
 
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 
 from wafi.adapters.model import RuleBasedTicketModel
 from wafi.api.logging import configure
@@ -35,6 +35,11 @@ async def trace(request: Request, call_next):
     result = await call_next(request)
     result.headers["X-Trace-ID"] = tid
     return result
+
+
+@app.get("/", include_in_schema=False)
+def frontend():
+    return FileResponse("src/wafi/frontend/index.html")
 
 
 @app.get("/health")

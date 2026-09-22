@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>WAFI | IT Department</title>
+
+  <style>
+    :root {
+      --navy: #12365c;
+      --navy-dark: #092b4c;
+      --blue: #4f8fe8;
+      --blue-light: #eaf4ff;
+      --teal: #55bfae;
+      --teal-light: #e8f8f5;
+      --purple: #8d7be8;
+      --purple-light: #f0edff;
+      --gold: #d6a62e;
+      --gold-light: #fff8df;
+      --text: #17365d;
+      --muted: #647b96;
+      --white: #ffffff;
+      --border: #d9e5f2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 5% 80%, rgba(84, 181, 220, .20), transparent 24%),
+        radial-gradient(circle at 96% 72%, rgba(82, 191, 174, .16), transparent 25%),
+        linear-gradient(135deg, #f8fbff 0%, #edf6ff 50%, #f7fbff 100%);
+    }
+
+    /* Header */
+    .topbar {
+      background: rgba(255, 255, 255, .94);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .department {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .department-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      box-shadow: 0 8px 20px rgba(18, 54, 92, .18);
+    }
+
+    .department-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .department-tagline {
+      margin-top: 3px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .5px;
+    }
+
+    .top-message {
+      font-size: 15px;
+      font-style: italic;
+      color: #6683a5;
+      text-align: right;
+    }
+
+    /* Main */
+    .container {
+      width: min(1080px, 90%);
+      margin: 0 auto;
+      padding: 45px 0 70px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .wafi-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--navy);
+    }
+
+    .robot {
+      width: 65px;
+      height: 65px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #4f8fe8, #55bfae);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 34px;
+      box-shadow: 0 12px 25px rgba(79, 143, 232, .25);
+    }
+
+    .hero h1 {
+      margin: 8px 0;
+      font-size: 31px;
+      color: var(--navy);
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin-top: 14px;
+      background: #e2efff;
+      color: #326db5;
+      border-radius: 30px;
+      padding: 8px 17px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* Main card */
+    .main-card {
+      background: rgba(255, 255, 255, .96);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 18px 55px rgba(20, 59, 94, .10);
+    }
+
+    .input-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 12px;
+    }
+
+    .input-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .input-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+    }
+
+    .tip {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 155px;
+      resize: vertical;
+      border: 1.5px solid #c9d9eb;
+      border-radius: 16px;
+      padding: 18px;
+      font-size: 16px;
+      color: var(--text);
+      outline: none;
+      background: #fbfdff;
+      transition: .2s;
+      font-family: inherit;
+    }
+
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(79, 143, 232, .10);
+    }
+
+    .analyze-btn {
+      width: 100%;
+      margin-top: 16px;
+      padding: 17px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(90deg, var(--navy), #1c4e7d);
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 9px 22px rgba(18, 54, 92, .20);
+      transition: .2s;
+    }
+
+    .analyze-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 25px rgba(18, 54, 92, .26);
+    }
+
+    .analyze-btn:disabled {
+      opacity: .65;
+      cursor: wait;
+      transform: none;
+    }
+
+    /* Results */
+    .result {
+      margin-top: 25px;
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .result-box {
+      border-radius: 17px;
+      padding: 20px;
+      min-height: 125px;
+      border: 1px solid rgba(0,0,0,.03);
+    }
+
+    .result-box:nth-child(1) {
+      background: linear-gradient(135deg, #e8f3ff, #dcecff);
+    }
+
+    .result-box:nth-child(2) {
+      background: linear-gradient(135deg, #e9faf6, #dff5ef);
+    }
+
+    .result-box:nth-child(3) {
+      background: linear-gradient(135deg, #f1edff, #eae6ff);
+    }
+
+    .result-box:nth-child(4) {
+      background: linear-gradient(135deg, #fff9e8, #fff4d2);
+    }
+
+    .result-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .result-label {
+      display: block;
+      color: #5f7590;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    .result-value {
+      display: block;
+      color: var(--navy);
+      font-size: 19px;
+      font-weight: 800;
+      word-break: break-word;
+    }
+
+    /* About */
+    .about {
+      margin-top: 22px;
+      padding: 20px 24px;
+      background: linear-gradient(90deg, #eef6ff, #f4f8ff);
+      border-radius: 17px;
+      border: 1px solid #dce9f7;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .about-icon {
+      font-size: 27px;
+    }
+
+    .about strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+    }
+
+    .about p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* Error */
+    .error {
+      display: none;
+      margin-top: 15px;
+      padding: 13px 16px;
+      background: #fff1f1;
+      border: 1px solid #ffd0d0;
+      border-radius: 12px;
+      color: #a92828;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy-dark);
+      color: white;
+      padding: 25px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-department strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    .footer-department span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      opacity: .75;
+    }
+
+    .footer-features {
+      display: flex;
+      gap: 30px;
+      color: #dcecff;
+      font-size: 13px;
+    }
+
+    .developer {
+      text-align: right;
+      color: #dcecff;
+      font-size: 13px;
+    }
+
+    .developer strong {
+      display: block;
+      margin-top: 3px;
+      color: white;
+      font-size: 15px;
+    }
+
+    @media (max-width: 850px) {
+      .result {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .top-message {
+        display: none;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .developer {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: 94%;
+        padding-top: 30px;
+      }
+
+      .main-card {
+        padding: 20px;
+      }
+
+      .wafi-logo {
+        font-size: 42px;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .result {
+        grid-template-columns: 1fr;
+      }
+
+      .input-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-features {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- IT Department Header -->
+  <header class="topbar">
+    <div class="department">
+      <div class="department-logo">⚙</div>
+
+      <div>
+        <div class="department-name">IT Department</div>
+        <div class="department-tagline">
+          Enable · Support · Empower
+        </div>
+      </div>
+    </div>
+
+    <div class="top-message">
+      Technology<br>
+      <strong>for a Better Tomorrow</strong>
+    </div>
+  </header>
+
+
+  <main class="container">
+
+    <!-- WAFI Hero -->
+    <section class="hero">
+
+      <div class="wafi-logo">
+        <span class="robot">🤖</span>
+        WAFI
+      </div>
+
+      <h1>IT Helpdesk Ticket Triage</h1>
+
+      <p>
+        Describe your IT issue and Wafi will analyze the ticket using AI.
+      </p>
+
+      <div class="hero-badge">
+        IT Helpdesk Triage
+      </div>
+
+    </section>
+
+
+    <!-- Main Application -->
+    <section class="main-card">
+
+      <div class="input-heading">
+        <div class="input-title">
+          <div class="input-icon">💬</div>
+          Describe your IT issue
+        </div>
+
+        <div class="tip">
+          💡 Try to be as specific as possible
+        </div>
+      </div>
+
+
+      <textarea
+        id="ticket"
+        maxlength="500"
+        placeholder="Example: My laptop cannot connect to the VPN..."
+      ></textarea>
+
+
+      <button
+        id="analyze"
+        class="analyze-btn"
+        onclick="analyzeTicket()"
+      >
+        ➤ &nbsp; Analyze Ticket
+      </button>
+
+
+      <div id="error" class="error"></div>
+
+
+      <!-- Prediction Results -->
+      <div id="result" class="result">
+
+        <div class="result-box">
+          <div class="result-icon">▦</div>
+          <span class="result-label">Category</span>
+          <strong id="category" class="result-value">-</strong>
+        </div>
+
+        <div class="result-box">
+          <div class="result-icon">▱</div>
+          <span class="result-label">Priority</span>
+          <strong id="priority" class="result-value">-</strong>
+        </div>
+
+        <div class="result-box">
+          <div class="result-icon">▥</div>
+          <span class="result-label">Confidence</span>
+          <strong id="confidence" class="result-value">-</strong>
+        </div>
+
+        <div class="result-box">
+          <div class="result-icon">▤</div>
+          <span class="result-label">Recommendation</span>
+          <strong id="recommendation" class="result-value">-</strong>
+        </div>
+
+      </div>
+
+
+      <!-- About WAFI -->
+      <div class="about">
+
+        <div class="about-icon">ⓘ</div>
+
+        <div>
+          <strong>About WAFI</strong>
+
+          <p>
+            Wafi uses AI to classify and prioritize IT helpdesk tickets,
+            helping the IT Department provide faster and more accurate support.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="footer-department">
+      <strong>IT Department</strong>
+      <span>Kingdom of Saudi Arabia</span>
+    </div>
+
+    <div class="footer-features">
+      <span>🛡 Secure</span>
+      <span>👥 Supportive</span>
+      <span>💡 Innovative</span>
+    </div>
+
+    <div class="developer">
+      Developed by
+      <strong>المهندس أسماء القحطاني</strong>
+      <strong>Asma Alqahtani</strong>
+    </div>
+
+  </footer>
+
+
+<script>
+async function analyzeTicket() {
+
+  const ticket = document.getElementById("ticket").value.trim();
+
+  const button = document.getElementById("analyze");
+  const error = document.getElementById("error");
+  const result = document.getElementById("result");
+
+  error.style.display = "none";
+  result.style.display = "none";
+
+
+  if (!ticket) {
+    error.textContent = "Please describe your IT issue first.";
+    error.style.display = "block";
+    return;
+  }
+
+
+  button.disabled = true;
+  button.textContent = "⏳  Analyzing...";
+
+
+  try {
+
+    const response = await fetch("/v1/predict", {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        ticket_id: "web-ticket",
+        text: ticket
+      })
+    });
+
+
+    const data = await response.json();
+
+
+    if (!response.ok) {
+      throw new Error(
+        data.detail || "Prediction failed."
+      );
+    }
+
+
+    document.getElementById("category").textContent =
+      data.team ?? "-";
+
+
+    document.getElementById("priority").textContent =
+      data.urgency ?? "-";
+
+
+    document.getElementById("confidence").textContent =
+      "N/A";
+
+
+    document.getElementById("recommendation").textContent =
+      data.reason ?? "-";
+
+
+    result.style.display = "grid";
+
+  } catch (err) {
+
+    error.textContent =
+      "Unable to analyze the ticket: " + err.message;
+
+    error.style.display = "block";
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = "➤  Analyze Ticket";
+
+  }
+}
+</script>
+
+</body>
+</html>
